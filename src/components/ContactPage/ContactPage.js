@@ -14,11 +14,13 @@ import {deepOrange500} from 'material-ui/styles/colors';
 import FlatButton from 'material-ui/FlatButton';
 import getMuiTheme from 'material-ui/styles/getMuiTheme';
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+import EventEmitter from 'eventemitter3';
 
 import withStyles from 'isomorphic-style-loader/lib/withStyles';
 import s from './ContactPage.scss';
 
 const title = 'Contact Us';
+
 
 const muiTheme = getMuiTheme({
   palette: {
@@ -27,26 +29,45 @@ const muiTheme = getMuiTheme({
 });
 
 
+
+
 class ContactPage extends Component {
 
-  constructor(props, context) {
-    super(props, context);
+    handleRequestClose() {
+        console.log("handleRequestClose");
+        this.setState({
+            open: false,
+        });
+    }
 
-    this.handleRequestClose = this.handleRequestClose.bind(this);
-    this.handleTouchTap = this.handleTouchTap.bind(this);
+    handleTouchTap() {
+        console.log("handleTouchTap");
 
-    this.state = {
-      open: false,
+        this.setState({
+            open: true,
+        });
+    }
+
+    handleClick = (event) => {
+        console.log("hallo world");
     };
-  }
+
 
   static contextTypes = {
     onSetTitle: PropTypes.func.isRequired,
   };
 
   componentWillMount() {
+      this.handleRequestClose = this.handleRequestClose.bind(this);
+      this.handleTouchTap = this.handleTouchTap.bind(this);
+
+      this.state = {
+          open: false,
+      };
     this.context.onSetTitle(title);
   }
+
+
 
   render() {
     const standardActions = (
@@ -54,18 +75,15 @@ class ContactPage extends Component {
             label="Ok"
             primary={true}
             onTouchTap={this.handleRequestClose}
+            onClick={this.handleRequestClose}
             />
     );
 
     return (
       <div className={s.root}>
-        <div className={s.container}>
-          <h1>{title}</h1>
-          <p>...</p>
-        </div>
 
         <MuiThemeProvider muiTheme={muiTheme}>
-          <div style={styles.container}>
+          <div>
             <Dialog
                 open={this.state.open}
                 title="Super Secret Password"
@@ -79,8 +97,10 @@ class ContactPage extends Component {
             <RaisedButton
                 label="Super Secret Password"
                 secondary={true}
+                onClick={this.handleTouchTap}
                 onTouchTap={this.handleTouchTap}
                 />
+              <br/>
           </div>
         </MuiThemeProvider>
 

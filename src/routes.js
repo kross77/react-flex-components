@@ -12,6 +12,7 @@ import Router from 'react-routing/src/Router';
 import fetch from './core/fetch';
 import App from './components/App';
 import ContentPage from './components/ContentPage';
+import LayoutExamplePage from './components/LayoutExamplePage';
 import ContactPage from './components/ContactPage';
 import LoginPage from './components/LoginPage';
 import RegisterPage from './components/RegisterPage';
@@ -31,11 +32,24 @@ const router = new Router(on => {
   on('/register', async () => <RegisterPage />);
 
   on('*', async (state) => {
+    console.log("path: "+state.path);
+    var path = state.path.replace("layout/", "");
+    console.log("path: "+ path);
     const query = `/graphql?query={content(path:"${state.path}"){path,title,content,component}}`;
+    console.log(query);
     const response = await fetch(query);
     const { data } = await response.json();
-    return data && data.content && <ContentPage {...data.content} />;
+    return data && data.content && <LayoutExamplePage {...data.content} />;
   });
+  //
+  //on('*', async (state) => {
+  //  const query = `/graphql?query={content(path:"${state.path}"){path,title,content,component}}`;
+  //  const response = await fetch(query);
+  //  const { data } = await response.json();
+  //  return data && data.content && <ContentPage {...data.content} />;
+  //});
+
+
 
   on('error', (state, error) => state.statusCode === 404 ?
     <App context={state.context} error={error}><NotFoundPage /></App> :

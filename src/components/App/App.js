@@ -47,9 +47,10 @@ class App extends Component {
   }
 
   componentWillMount() {
-    injectTapEventPlugin();
+
     const { insertCss } = this.props.context;
     this.removeCss = insertCss(s);
+    //injectTapEventPlugin();
   }
 
   componentWillUnmount() {
@@ -65,6 +66,7 @@ class App extends Component {
         <Footer />
       </div>
     );
+
   }
 
 }

@@ -14,6 +14,7 @@
 .link {
   display: inline-block;
   padding: 3px 8px;
+  font-family: "Helvetica Neue", Helvetica, Arial, sans-serif;
   text-decoration: none;
   font-size: 1.125em; /* ~18px */
 }
@@ -21,11 +22,11 @@
 .link,
 .link:active,
 .link:visited {
-  color: rgba(255, 255, 255, .6);
+  color: rgba(33, 96, 146, 1);
 }
 
 .link:hover {
-  color: rgba(255, 255, 255, 1);
+  color: rgb(57, 162, 255);
 }
 
 .highlight {

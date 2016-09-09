@@ -9,6 +9,10 @@
 
 import React, { Component, PropTypes } from 'react';
 import Location from '../../core/Location';
+import FlatButton from 'material-ui/FlatButton';
+import getMuiTheme from 'material-ui/styles/getMuiTheme';
+
+//const prepareStyles = this.context.muiTheme ? this.context.muiTheme.prepareStyles : () => {};
 
 function isLeftClickEvent(event) {
   return event.button === 0;

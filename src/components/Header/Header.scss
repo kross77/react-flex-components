@@ -9,11 +9,11 @@
 
 @import '../variables.scss';
 
-$brand-color: #61dafb;
+$brand-color: #216092;
 
 .root {
-  background: #373277;
-  color: #fff;
+  background: #f3f3f3;
+  color: black;
 }
 
 .container {
@@ -45,7 +45,7 @@ $brand-color: #61dafb;
   margin: 0;
   padding: 10px;
   font-weight: normal;
-  font-size: 4em;
+  font-size: 2.5em;
   line-height: 1em;
 }
 
